@@ -1,0 +1,85 @@
+body {margin: 0; padding: 0;}
+* {box-sizing: border-box;}
+.container {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  padding-top:5px;
+  text-align: center;
+  background: #e8d98b;
+  color: blue;
+}
+  h3 {margin-bottom: 10px;}
+  .contents {
+    width: 96%;
+    height: max-content;
+    margin: auto;
+    background: #fff;
+    overflow: auto;
+    border: 1px solid #000;
+    border-top: 1px solid #fff;
+  }
+    .format {
+      width: 98%;
+      height: max-content;
+      margin: auto;
+      overflow: auto;
+    }
+      .insert {
+        width:98%;
+        margin: 3px auto;
+        padding: 0;
+        border: 1px solid #000;
+        border-radius: 7px;
+      }
+        .texthead {
+          padding: 0;
+          margin:  4px;
+        }
+        .time {
+          padding: 0;
+          text-align: right;
+          margin:  4px 10px;
+        }
+        .txt {
+          padding: 0;
+          text-align: left;
+          margin:  4px 10px;
+        }
+        .coord{
+          padding: 0;
+          text-align: left;
+          margin:  4px 10px;
+        }
+  .control {
+    position: relative;
+    bottom: 0;
+  }
+    .textar {
+      width: 95%;
+      height: max-content;
+      margin: 3px auto;
+    }
+    .blockI {
+      width: 150px;
+      display: flex;
+      justify-content: space-around;
+      align-items:center;
+      position: absolute;
+      top: 7px;
+      left: calc(90% - 125px);
+    }
+    .record {width: 0px;}
+    .note {left: calc(90% - 80px);}
+      .fig {width: 18%;}
+  .popup {
+    width: 30%;
+    height: max-content;
+    background: #f0be36;
+    border: 1px solid #8d6905;
+    border-radius: 10px;
+    position: absolute;
+    top: 2%;
+    left: 35%;
+  }
+      #Video {width: 50%;}
