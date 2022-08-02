@@ -92,7 +92,7 @@ export default class App {
     const warning = new Popup('media').showP();
     document.querySelector('.container').append(warning);
     const video = new CreatMedia('Video').getBlock();
-    this.blokAudio.prepend(video);
+    this.blokVideo.prepend(video);
     getCoords('coordVideo');
     startRecorder('Video');
 

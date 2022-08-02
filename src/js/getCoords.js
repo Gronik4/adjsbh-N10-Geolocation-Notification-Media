@@ -8,7 +8,7 @@ export default function getCoords(place) {
   }
 
   function error() {
-    const pop = Popup.showP('text');
+    const pop = new Popup('text').showP();
     document.querySelector('.container').append(pop);
     document.getElementById('note').style.width = '0px';
     document.getElementById('ta').setAttribute('disabled', 'disabled');

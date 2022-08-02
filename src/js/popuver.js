@@ -8,6 +8,7 @@ export default class Popup {
     popup.className = 'popup';
     const header = document.createElement('h4');
     header.className = 'popup_h4';
+    popup.append(header);
     const p = document.createElement('p');
     let txtAr;
     let button;

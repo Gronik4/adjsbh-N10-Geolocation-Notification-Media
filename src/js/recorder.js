@@ -38,9 +38,7 @@ const startRecorder = async (flag) => {
 };
 
 const stopRecorder = async (e) => {
-  if (recorder) {
-    recorder.stop();
-  }
+  if (recorder) { recorder.stop(); }
   if (stream) {
     stream.getTracks().forEach((track) => track.stop());
   }
