@@ -1,4 +1,7 @@
-export default function stopwatch(outT, deletMedia, saveMedia) {
+export default function stopwatch() {
+  const deletMedia = document.getElementById('btcr');
+  const saveMedia = document.getElementById('bttk');
+  const outT = document.getElementById('outT');
   outT.innerHTML = '00:00';
   let min = 0;
   let tameSt = 0;

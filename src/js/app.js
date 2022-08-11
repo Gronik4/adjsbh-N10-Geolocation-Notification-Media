@@ -1,5 +1,4 @@
 import CreateText from './createText';
-import stopwatch from './stopwatch';
 import { startRecorder, stopRecorder } from './recorder';
 import getCoords from './getCoords';
 import CreatMedia from './createMedia';
@@ -16,8 +15,8 @@ export default class App {
     this.blokAudio = document.getElementById('ma');
     this.blokVideo = document.getElementById('vo');
     this.outT = document.getElementById('outT');
-    this.stopMedia = document.getElementById('btcr');
-    this.startMedia = document.getElementById('bttk');
+    this.deleteMedia = document.getElementById('btcr');
+    this.writeMedia = document.getElementById('bttk');
 
     this.textarr.addEventListener('keydown', this.hendlerTextarr.bind(this));
     this.textarr.addEventListener('click', this.hiddNote.bind(this));
@@ -63,23 +62,24 @@ export default class App {
   hendlerAudio() {
     this.hiddNote();
     this.showRecord();
-    stopwatch(this.outT, this.stopMedia, this.startMedia);
     const warning = new Popup('media').showP();
     document.querySelector('.container').append(warning);
     const audio = new CreatMedia('Audio').getBlock();
     this.blokAudio.prepend(audio);
     getCoords('coordAudio');
-    startRecorder('Audio');
 
-    this.startMedia.addEventListener('click', () => {
+    this.writeMedia.addEventListener('click', () => {
+      warning.remove();
+      document.getElementById('Audio').removeAttribute('hidden');
+      stopRecorder();
       this.hiddRecord();
       this.showNote();
     });
 
-    this.stopMedia.addEventListener('click', () => {
-      warning.remove();
-      document.getElementById('Audio').removeAttribute('hidden');
-      stopRecorder();
+    this.deleteMedia.addEventListener('click', async () => {
+      await stopRecorder();
+      if (document.querySelector('.popup')) { document.querySelector('.popup').remove(); }
+      document.querySelector('.Audio').remove();
       this.hiddRecord();
       this.showNote();
     });
@@ -88,23 +88,24 @@ export default class App {
   hedlerVideo() {
     this.hiddNote();
     this.showRecord();
-    stopwatch(this.outT, this.stopMedia, this.startMedia);
     const warning = new Popup('media').showP();
     document.querySelector('.container').append(warning);
     const video = new CreatMedia('Video').getBlock();
     this.blokVideo.prepend(video);
     getCoords('coordVideo');
-    startRecorder('Video');
 
-    this.startMedia.addEventListener('click', () => {
+    this.writeMedia.addEventListener('click', () => {
+      warning.remove();
+      document.getElementById('Video').removeAttribute('hidden');
+      stopRecorder();
       this.hiddRecord();
       this.showNote();
     });
 
-    this.stopMedia.addEventListener('click', () => {
-      warning.remove();
-      document.getElementById('Video').removeAttribute('hidden');
-      stopRecorder();
+    this.deleteMedia.addEventListener('click', async () => {
+      await stopRecorder();
+      if (document.querySelector('.popup')) { document.querySelector('.popup').remove(); }
+      document.querySelector('.Video').remove();
       this.hiddRecord();
       this.showNote();
     });

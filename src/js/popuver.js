@@ -4,6 +4,8 @@ export default class Popup {
   }
 
   showP() {
+    const lastPopup = document.querySelector('.popup');
+    if (lastPopup) { lastPopup.remove(); }
     const popup = document.createElement('div');
     popup.className = 'popup';
     const header = document.createElement('h4');
