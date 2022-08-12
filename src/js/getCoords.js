@@ -26,12 +26,15 @@ export default function getCoords(place) {
 
     pop.querySelector('.butP').addEventListener('click', () => {
       const hendCoordinates = pop.querySelector('.txtAr').value;
+      const regexp = /^\d+.\d+, \d+.\d+$/ig;
       let lati;
       let longi;
       if (hendCoordinates) {
-        const [latitude, longitude] = hendCoordinates.split(', ');
-        lati = latitude;
-        longi = longitude;
+        if (regexp.test(hendCoordinates)) {
+          const [latitude, longitude] = hendCoordinates.split(', ');
+          lati = latitude;
+          longi = longitude;
+        } else { lati = '52.5213256511'; longi = '41.26515421316'; }
       } else { lati = '52.5213256511'; longi = '41.26515421316'; }
       document.querySelector(`.${place}`).append(`Широта: ${lati}, Долгота: ${longi}`);
       if (place === 'coordText') {

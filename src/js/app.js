@@ -17,12 +17,14 @@ export default class App {
     this.outT = document.getElementById('outT');
     this.deleteMedia = document.getElementById('btcr');
     this.writeMedia = document.getElementById('bttk');
+    this.writeN = document.getElementById('writN');
 
     this.textarr.addEventListener('keydown', this.hendlerTextarr.bind(this));
     this.textarr.addEventListener('click', this.hiddNote.bind(this));
     this.textarr.addEventListener('blur', this.showNote.bind(this));
     this.butfon.addEventListener('click', this.hendlerAudio.bind(this));
     this.butvid.addEventListener('click', this.hedlerVideo.bind(this));
+    this.writeN.addEventListener('click', this.hendlerWriteN.bind(this));
   }
 
   showNote() {
@@ -31,6 +33,7 @@ export default class App {
 
   hiddNote() {
     this.note.style.width = '0px';
+    this.writeN.hidden = false;
   }
 
   showRecord() {
@@ -43,24 +46,31 @@ export default class App {
     this.outT.setAttribute('hidden', 'hidden');
   }
 
-  hendlerTextarr(e) {
-    if (e.code === 'NumpadEnter') {
-      if (this.textarr.value === '') {
-        alert('Нельзя отправить пустое место. Наберите пожалуйста Ваше сообщение.');
-        this.textarr.value = '';
-        this.textarr.blur();
-        return;
-      }
-      const note = new CreateText(this.textarr.value).getBlock();
-      this.blokText.prepend(note);
-      getCoords('coordText');
+  hendlerWriteN() {
+    if (this.textarr.value === '') {
+      alert('Нельзя отправить пустое место. Наберите пожалуйста Ваше сообщение.');
       this.textarr.value = '';
       this.textarr.blur();
+      this.writeN.hidden = true;
+      return;
+    }
+    const note = new CreateText(this.textarr.value).getBlock();
+    this.blokText.prepend(note);
+    getCoords('coordText');
+    this.textarr.value = '';
+    this.textarr.blur();
+    this.writeN.hidden = true;
+  }
+
+  hendlerTextarr(e) {
+    if (e.code === 'NumpadEnter') {
+      this.hendlerWriteN(e);
     }
   }
 
   hendlerAudio() {
     this.hiddNote();
+    this.writeN.hidden = true;
     this.showRecord();
     const warning = new Popup('media').showP();
     document.querySelector('.container').append(warning);
@@ -87,6 +97,7 @@ export default class App {
 
   hedlerVideo() {
     this.hiddNote();
+    this.writeN.hidden = true;
     this.showRecord();
     const warning = new Popup('media').showP();
     document.querySelector('.container').append(warning);
