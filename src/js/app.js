@@ -26,7 +26,7 @@ export default class App {
   }
 
   showNote() {
-    this.note.style.width = '150px';
+    this.note.style.width = '151px';
   }
 
   hiddNote() {
@@ -34,7 +34,7 @@ export default class App {
   }
 
   showRecord() {
-    this.record.style.width = '150px';
+    this.record.style.width = '151px';
     this.outT.removeAttribute('hidden');
   }
 
